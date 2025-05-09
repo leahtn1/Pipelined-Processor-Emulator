@@ -1,0 +1,11 @@
+addi t1, t0, 1       // t1 = initial value (1)
+addi t2, t0, 0       // t2 = loop counter
+addi t3, t0, 5       // t3 = shift limit (5 times)
+
+ShiftLoop:
+sll t1, t1, 1        // shift t1 left by 1 (t1 *= 2)
+addi t2, t2, 1       // t2++
+bnq t2, t3, ShiftLoop // if t2 != t3, keep looping
+
+END:
+nop                 // done

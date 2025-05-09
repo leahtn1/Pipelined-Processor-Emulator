@@ -1,0 +1,7 @@
+addi t1, t0, 5       // t1 = 5
+addi t2, t0, 5       // t2 = 5
+beq t1, t2, 4    // if t1 == t2, jump to Equal
+addi t3, t0, 10      // shouldn't run
+Equal nop
+addi t2, t0, 20 // should run: t2 = 20
+#expect t1, t2, t3 = 5, 20, 0A

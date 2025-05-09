@@ -1,0 +1,20 @@
+addi t1, t0, 1
+addi t2, t0, 2
+addi t3, t0, 3
+addi t4, t0, 4
+add t20, t1, t2
+beq t3, t4, 10       //branch to EQUAL
+add t21, t3, t2         //not skipped
+sllr t22, t2, t3        //not skipped
+EQUAL nop
+addi t5, t0, 5
+bnq t1, t2, 14    //BRANCH to NOTEQUAL
+sll t23, t2, 1          //skipped
+slr t24, t4, 3          //skipped
+NOTEQUAL nop
+addi t1, t0, 100
+nop
+nop
+nop
+#expect t1, t2, t3, t4 == 100, 2, 3, 4, 5
+# test if branches work together

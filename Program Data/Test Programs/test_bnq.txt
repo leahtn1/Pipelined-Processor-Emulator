@@ -1,0 +1,12 @@
+addi t1, t0, 0       //counter = 0
+addi t2, t0, 2       //target = 2
+addi t3, t0, 1
+Loop nop
+addi t1, t1, 1  //counter++
+sll t3, t3, 1
+bnq t1, t2, Loop     //should exit after two loops
+nop
+nop
+nop
+nop
+#expect t1, t2, t3 = 2, 2, 4

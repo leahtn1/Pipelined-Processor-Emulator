@@ -1,0 +1,30 @@
+addi t1, t0, 8      //maximum bitwidth of numbers being multiplied     
+addi t2, t0, 0      //n1 number being multiplied                       
+addi t3, t0, 0      //n2                                                
+addi t5, t0, 0      //bitmask                                              
+addi t7, t0, 1      //t7 = 1 to compare t5    
+addi t8, t0, 201    //compare value   
+addi t9, t0, 1      //number being multiplied. increments up to 200
+TOP nop             //starting multiplication again
+add t2, t0, t9
+add t3, t0, t9      //update numbers to be multiplied                                          
+addi t4, t0, 0      //counter   =0                               
+addi t6, t0, 0      //result                    
+LOOP nop                                                                
+andi t5, t3, 1      //t5 = n1(LSB) && 1                                 
+bnq t5, t7, 16      //if n1(LSB)==0, SKIPADD                     
+add t6, t6, t2                                                          
+SKIPADD nop           //                                                                  
+slr t3, t3, 1       //n2  >>1                                           
+sll t2, t2, 1       //n1 <<1                                            
+addi, t4, t4, 1     //counter++                                         
+bnq t4, t1, LOOP    //if counter !=8, loop back
+nop
+nop
+sto t6, t9, 0       //store current result to memory/ ie 4^2 is stored in memory address 4
+addi, t9, t9, 1     //on to multiplying the next number 
+bnq t9, t8, TOP     //if n != 200, loop back                    
+nop //                                                                  
+nop //                                                                  
+nop //
+#multiply using booths algo. expect t6 to take the values of the squares   

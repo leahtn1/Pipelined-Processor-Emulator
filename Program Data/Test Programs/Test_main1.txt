@@ -1,0 +1,18 @@
+addi t3, t0, 1
+addi t4, t0, 0
+addi t5, t0, 200
+OUTER nop
+addi t1, t0, 0
+addi t2, t0, 0
+LOOP nop
+addi t1, t1, 1            //counter++
+add t2, t2, t3           //t2 =t2 + 3
+bnq t1, t3, LOOP            //if t1==t3, 
+#sto t2, t0, 
+addi t4, t4, 1
+addi t3, t3, 1
+bnq t4, t5, OUTER
+nop
+nop
+nop
+nop

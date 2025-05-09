@@ -1,0 +1,9 @@
+addi t3, t0, 3;
+LOOP nop
+addi t1, t1, 1;            //counter++
+addi t2, t2, t3;            //t2 =t2 + 3
+bnq t1, t3, LOOP            //if t1==t3, 
+nop
+nop
+nop
+nop

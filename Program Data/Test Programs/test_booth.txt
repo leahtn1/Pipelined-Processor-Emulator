@@ -1,0 +1,20 @@
+#multiply using booths algo. expect t6 = 3x4                            t1  t2  t3  t4  t5  t6  t7
+addi t1, t0, 4      //maximum bitwidth of numbers being multiplied      32  0   0   0   0   0   0
+addi t2, t0, 4      //n1 number being multiplied                        32  4   0   0   0   0   0
+addi t3, t0, 3      //n2                                                32  4   3   0   0   0   0
+addi t4, t0, 0      //counter                                           32  4   3   0   0   0   0
+addi t5, t0, 0      //compare value                                     32  4   3   0   0   0   0
+addi t6, t0, 0      //result                                            32  4   3   0   0   0   0   
+addi t7, t0, 1      //t7 = 1 to compare t5                              32  4   3   0   0   0   1
+LOOP nop                                                                32  4   3   0   0   0   1
+andi t5, t3, 1      //t5 = n1(LSB) && 1                                 32  4   3   0   1   0   1
+bnq t5, t7, 12 //if n1(LSB)==0, dont add to result                      32  4   3   0   1   0   1   BRANCH NOT TAKEN
+add t6, t6, t2                                                          32  4   3   0   1   4   1
+SKIPADD nop           //                                                                  
+slr t3, t3, 1       //n2  >>1                                           32  4   1   0   1   4   1
+sll t2, t2, 1       //n1 <<1                                            32  8   1   0   1   4   1
+addi, t4, t4, 1     //counter++                                         32  8   1   1   1   4   1
+bnq t4, t1, LOOP    //if counter !=32, loop back                        32  8   1   1   1   4   1 LOOP TAKEN
+nop //                                                                  32  8   1   1   1   4   1   t5=1 so result inc
+nop //                                                                  32  8   1   1   1   12  1
+nop //
