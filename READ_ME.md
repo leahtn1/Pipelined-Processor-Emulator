@@ -3,7 +3,7 @@
 Code written by Leah Nyahunzvi - ln2u23@soton.ac.uk
 
 ## Overview
-This is a 5 stage pipeline emulator, based on the MIPS architecture. It consists of a custom instruction set and an assembler built using a python script.
+This is a 5 stage pipeline emulator, based on the MIPS architecture. It consists of a custom instruction set and an assembler built using a python script. This project was submitted as coursework for Computer  Engineering module in my second year of university.
 
 ### Instructions & Information:
 
@@ -96,6 +96,7 @@ ISA with Example Uses
                                         Run the assembler and look for the output with the labels and line numbers
                                         Manually replace undefined branch points with the line numbers given by the assembler
                         
+
 
 
 
